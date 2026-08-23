@@ -51,20 +51,10 @@ two of them on Android rather than iOS. Details in [§3.4](#34-continuity--cross
 
 ---
 
-## 2. Status at a glance
 
-| Phase | Status | Key PRs |
-|---|---|---|
-| User Experience (List Item Editor) | ✅ UIBinder Integration | [#3990](https://github.com/mit-cml/appinventor-sources/pull/3990), [#4008](https://github.com/mit-cml/appinventor-sources/pull/4008), [#4023](https://github.com/mit-cml/appinventor-sources/pull/4023), [#4032](https://github.com/mit-cml/appinventor-sources/pull/4032) |
-| Reliability (`ListDataModel`) | ✅ ListDataModel| [#4037](https://github.com/mit-cml/appinventor-sources/pull/4037), [#4041](https://github.com/mit-cml/appinventor-sources/pull/4041), [#4053](https://github.com/mit-cml/appinventor-sources/pull/4053), [#4059](https://github.com/mit-cml/appinventor-sources/pull/4059) · [#4062](https://github.com/mit-cml/appinventor-sources/pull/4062) |
-| Extensibility (MultiSelect, UpdateItem) | ✅  MultiSelect + Block API | [#4067](https://github.com/mit-cml/appinventor-sources/pull/4067), [#4068](https://github.com/mit-cml/appinventor-sources/pull/4068) |
-| Continuity (cross-platform parity) | ✅ Contract + full audit  | [#4073](https://github.com/mit-cml/appinventor-sources/pull/4073), [`LISTVIEW_PARITY_CONTRACT.md`](./LISTVIEW_PARITY_CONTRACT.md) |
+## 2. Work completed, by phase
 
----
-
-## 3. Work completed, by phase
-
-### 3.1 User Experience — List Item Editor rebuild
+### 2.1 User Experience — List Item Editor rebuild
 
 The List Item Editor — the dialog behind a ListView's **ListData → "Click to
 Add/Delete Data"** button — is how every App Inventor user authors list content, so
@@ -142,7 +132,7 @@ could be broken by it.
 
 ▶ **[Keyboard-navigation demo](https://github.com/mit-cml/appinventor-sources/pull/4023)** — screen recording in PR #4023, also showing that the accessibility behavior from #3990 is preserved.
 
-### 3.2 Reliability — `ListDataModel`
+### 2.2 Reliability — `ListDataModel`
 
 Before this phase, a ListView's data, selection, and filter state were scattered across the 
 Android adapter and loose fields on the iOS ListView. This phase gave both platforms a single owning model. 
@@ -219,7 +209,7 @@ And because the logic now lives in one plain class instead of inside an adapter,
 became unit-testable on its own — `ListDataModelTest` covers filtering, the
 filtered-row-to-real-item mapping, and the keep-while-visible selection policy.
 
-### 3.3 Extensibility
+### 2.3 Extensibility
 
 This phase added two things an app simply could not do before: **select more than one
 row**, and **replace a single row without rebuilding the list**. Each landed on
@@ -234,7 +224,7 @@ across the internal refactors, and where consolidation quietly made it unusable 
 was repaired in review — see the `getDataModel()` / `getStyle()` note under
 [#4062](#32-reliability--listdatamodel) above.
 
-### 3.4 Continuity — cross-platform parity
+### 2.4 Continuity — cross-platform parity
 
 Android and iOS are separate hand-written implementations with no shared code, so
 every property has to be built twice and the two drift apart quietly. Nothing said
@@ -270,7 +260,7 @@ Every member was exercised on both platforms, so no row is left unverified — t
 Android column reports observed results too, rather than being assumed correct by
 default.
 
-## 4. Future work
+## 3. Future work
 
 **Where the audit points next.** The parity review also provided a clear picture of the remaining differences between Android and iOS. 
 These differences have been documented, along with their root causes wherever they could be identified. They provide a useful starting point for future improvements and can be addressed individually without repeating the earlier investigation.
@@ -296,7 +286,7 @@ of paging cleanly one at a time, which is independently what the audit flagged u
 
 ---
 
-## 5. Lessons learned
+## 4. Lessons learned
 
 - **Inspect before you guess.** Looking at the actual runtime behavior, layout, or platform code often gave me the answer faster than guessing at it did.
 - **Don't layer fixes.** Stacking one fix on top of another makes it harder to know what actually worked. That callback is harder on the next person too — not just me, but whoever has to review the diff.
@@ -305,7 +295,7 @@ of paging cleanly one at a time, which is independently what the audit flagged u
 
 ---
 
-## 6. Conclusion
+## 5. Conclusion
 
 This summer taught me that uncertainty unlocks real-world engineering.
 
@@ -321,7 +311,7 @@ I got exactly the long journey I said I was hoping for. I'd like to keep going.
 
 ---
 
-## 7. Appendix — full pull request ledger
+## 6. Appendix — full pull request ledger
 
 Work that sits outside the four phases is listed separately below: earlier
 contributions, side fixes taken on during the program, and the branch-sync pull
