@@ -6,8 +6,8 @@
 **Repository:** [mit-cml/appinventor-sources](https://github.com/mit-cml/appinventor-sources)
 
 This page is my GSoC 2026 final work product. It links every pull request from the
-program period, summarizes what each phase delivered, and states plainly what is
-still open. Both merged and unmerged code are linked — nothing is hidden.
+program period, summarizes what each phase delivered, and states what is
+still open. Both merged and unmerged code are linked.
 
 ---
 
