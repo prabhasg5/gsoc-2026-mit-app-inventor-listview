@@ -142,7 +142,7 @@ The aim was to give both platforms one class that owns all three, and to reduce 
 - **[#4041](https://github.com/mit-cml/appinventor-sources/pull/4041)** — fixed search filtering, which was silently broken on iOS (results were computed but never read), and defined the selection-under-filter policy: keep the selection while the item stays visible, clear it only when the filter hides it.
 - **[#4053](https://github.com/mit-cml/appinventor-sources/pull/4053)** — moved Android's `selectedItems`/`originalPositions`/`Filter` into the model, using a thread-safe split (`computeFilter` on the background filtering thread, `commitFilter` on the UI thread) to avoid a `RecyclerView` count-mismatch crash.
 - **[#4059](https://github.com/mit-cml/appinventor-sources/pull/4059)** — gave the iOS model the same mutation and selection-mapping API, replacing six duplicated copies of selection-derivation logic with one.
-- **[#4062](https://github.com/mit-cml/appinventor-sources/pull/4062)** (open) — moves Android's appearance properties into a `ListViewStyle` object so a color/font change re-binds the existing adapter instead of rebuilding it from scratch, which used to also silently wipe the selection highlight.
+- **[#4062](https://github.com/mit-cml/appinventor-sources/pull/4062)** — moves Android's appearance properties into a `ListViewStyle` object so a color/font change re-binds the existing adapter instead of rebuilding it from scratch, which used to also silently wipe the selection highlight.
 
   Review also caught an extension-compatibility gap here. `setListAdapter` stayed public, but the adapter now needs a 
   `ListDataModel` and a `ListViewStyle` — both private, so no extension could build one to pass in.
@@ -215,8 +215,8 @@ This phase added two things an app simply could not do before: **select more tha
 row**, and **replace a single row without rebuilding the list**. Each landed on
 Android and iOS in the same pull request.
 
-- **[#4067](https://github.com/mit-cml/appinventor-sources/pull/4067)** (open) — exposes `MultiSelect` on Android, where it existed but was hidden from the designer and the blocks, and implements it from scratch on iOS, where `ListView.swift` had no reference to it at all. Adds `SelectedItems` on both platforms: a read-only list of what is picked, in the order it was picked.
-- **[#4068](https://github.com/mit-cml/appinventor-sources/pull/4068)** (open) — adds `UpdateItemAtIndex` on both platforms, replacing one row in place. The replaced row loses its selection, since a different item now occupies that position; nothing moves, so selections around it are untouched.
+- **[#4067](https://github.com/mit-cml/appinventor-sources/pull/4067)** — exposes `MultiSelect` on Android, where it existed but was hidden from the designer and the blocks, and implements it from scratch on iOS, where `ListView.swift` had no reference to it at all. Adds `SelectedItems` on both platforms: a read-only list of what is picked, in the order it was picked.
+- **[#4068](https://github.com/mit-cml/appinventor-sources/pull/4068)** — adds `UpdateItemAtIndex` on both platforms, replacing one row in place. The replaced row loses its selection, since a different item now occupies that position; nothing moves, so selections around it are untouched.
 
 Extensibility here also means *not breaking the people already extending the component*. 
 The custom-adapter hook used by third-party extensions was preserved
