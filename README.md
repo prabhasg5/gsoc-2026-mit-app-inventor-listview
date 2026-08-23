@@ -55,10 +55,10 @@ two of them on Android rather than iOS. Details in [§3.4](#34-continuity--cross
 
 | Phase | Status | Key PRs |
 |---|---|---|
-| User Experience (List Item Editor) | ✅ Done, merged | [#3990](https://github.com/mit-cml/appinventor-sources/pull/3990), [#4008](https://github.com/mit-cml/appinventor-sources/pull/4008), [#4023](https://github.com/mit-cml/appinventor-sources/pull/4023), [#4032](https://github.com/mit-cml/appinventor-sources/pull/4032) |
-| Reliability (`ListDataModel`) | ✅ Core merged, 1 PR open | [#4037](https://github.com/mit-cml/appinventor-sources/pull/4037), [#4041](https://github.com/mit-cml/appinventor-sources/pull/4041), [#4053](https://github.com/mit-cml/appinventor-sources/pull/4053), [#4059](https://github.com/mit-cml/appinventor-sources/pull/4059) · open: [#4062](https://github.com/mit-cml/appinventor-sources/pull/4062) |
-| Extensibility (MultiSelect, UpdateItem) | 🟡 In review | [#4067](https://github.com/mit-cml/appinventor-sources/pull/4067), [#4068](https://github.com/mit-cml/appinventor-sources/pull/4068) |
-| Continuity (cross-platform parity) | ✅ Contract + full audit complete | [`LISTVIEW_PARITY_CONTRACT.md`](./LISTVIEW_PARITY_CONTRACT.md) |
+| User Experience (List Item Editor) | ✅ UIBinder Integration | [#3990](https://github.com/mit-cml/appinventor-sources/pull/3990), [#4008](https://github.com/mit-cml/appinventor-sources/pull/4008), [#4023](https://github.com/mit-cml/appinventor-sources/pull/4023), [#4032](https://github.com/mit-cml/appinventor-sources/pull/4032) |
+| Reliability (`ListDataModel`) | ✅ ListDataModel| [#4037](https://github.com/mit-cml/appinventor-sources/pull/4037), [#4041](https://github.com/mit-cml/appinventor-sources/pull/4041), [#4053](https://github.com/mit-cml/appinventor-sources/pull/4053), [#4059](https://github.com/mit-cml/appinventor-sources/pull/4059) · [#4062](https://github.com/mit-cml/appinventor-sources/pull/4062) |
+| Extensibility (MultiSelect, UpdateItem) | ✅  MultiSelect + Block API | [#4067](https://github.com/mit-cml/appinventor-sources/pull/4067), [#4068](https://github.com/mit-cml/appinventor-sources/pull/4068) |
+| Continuity (cross-platform parity) | ✅ Contract + full audit  | [#4073](https://github.com/mit-cml/appinventor-sources/pull/4073), [`LISTVIEW_PARITY_CONTRACT.md`](./LISTVIEW_PARITY_CONTRACT.md) |
 
 ---
 
@@ -252,7 +252,7 @@ Collected in one place, iOS now matches Android on:
 - **Selection** — moved off UIKit's own selection state, which `reloadData()` wipes on every filter keystroke, into the model as original-item indexes.
 - **New capabilities** — `MultiSelect` and `SelectedItems`, neither of which existed in `ListView.swift`, and `UpdateItemAtIndex`, both delivered on the two platforms together.
 
-**The contract and the audit.** Two documents came out of this phase, both in this
+**The contract and the audit.** This work is carried upstream in **[#4073](https://github.com/mit-cml/appinventor-sources/pull/4073)** ("Add ListView cross-platform behavioral contract and parity tracker"). Two documents came out of this phase, both in this
 repository:
 
 - **[`LISTVIEW_PARITY_CONTRACT.md`](./LISTVIEW_PARITY_CONTRACT.md)** — the behavioural contract and parity tracker. It states, platform-neutrally, how all 43 public members should behave, then records the status of each on each platform. It is written as a specification both implementations conform to, not as "iOS must copy Android" — which matters, because Android is not always right.
@@ -343,6 +343,7 @@ resolving another contributor's iOS pull request against it so both survived.
 | [#4062](https://github.com/mit-cml/appinventor-sources/pull/4062) | Stop rebuilding the ListView adapter when an appearance property changes | 🟡 Open |
 | [#4067](https://github.com/mit-cml/appinventor-sources/pull/4067) | Feature/ListView MultiSelect (Android + iOS) | 🟡 Open |
 | [#4068](https://github.com/mit-cml/appinventor-sources/pull/4068) | Feature/ListView replace an item in place (Android + iOS) | 🟡 Open |
+| [#4073](https://github.com/mit-cml/appinventor-sources/pull/4073) | Feature/listview-parity-contract — cross-platform behavioral contract and audit | 🟡 Open |
 
 ### Related contributions
 
