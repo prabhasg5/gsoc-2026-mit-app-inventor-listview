@@ -246,7 +246,7 @@ Collected in one place, iOS now matches Android on:
 repository:
 
 - **[`LISTVIEW_PARITY_CONTRACT.md`](./LISTVIEW_PARITY_CONTRACT.md)** — the behavioural contract and parity tracker. It states, platform-neutrally, how all 43 public members should behave, then records the status of each on each platform. It is written as a specification both implementations conform to, not as "iOS must copy Android" — which matters, because Android is not always right.
-- **[Parity audit report](./ListViewParityAuditReport_22-08-2026%20.pdf)** (PDF) — the results of running that contract as a test, carried out on **21–22 August 2026**. One app, one identical sequence of steps, executed on the Android emulator and the iOS simulator with companions built from the same commit. Every member exercised on both; nothing inferred from one platform alone.
+- **[Parity audit report](./ListViewParityAuditReport_22-08-2026.pdf)** (PDF) — the results of running that contract as a test, carried out on **21–22 August 2026**. One app, one identical sequence of steps, executed on the Android emulator and the iOS simulator with companions built from the same commit. Every member exercised on both; nothing inferred from one platform alone.
 
 The audit found **13 defects — 11 on iOS in five clusters, and 2 on Android**. The
 Android pair matters more than the count suggests: `SelectionIndex` does not clamp
